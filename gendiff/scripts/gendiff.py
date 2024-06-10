@@ -3,7 +3,7 @@ import json
 
 
 def generate_diff(first_file, second_file):
-    result = f'\n'
+    result = '\n'
     dict1 = json.load(open(first_file))
     dict2 = json.load(open(second_file))
     sum_dict = {**dict1, **dict2}
@@ -22,14 +22,14 @@ def generate_diff(first_file, second_file):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Compares two configuration files and shows a difference.")
+    parser = argparse.ArgumentParser(description="""Compares
+     two configuration files and shows a difference.""")
     parser.add_argument("first_file")
     parser.add_argument("second_file")
     parser.add_argument('-f', '--format', help='set format of output')
     args = parser.parse_args()
     generate_diff(args.first_file, args.second_file)
     return
-
 
 
 if __name__ == "__main__":
