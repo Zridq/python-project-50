@@ -9,3 +9,6 @@ RE:
 
 lint:
 	@poetry run flake8 gendiff
+
+make check:
+	@pytest
