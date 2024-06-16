@@ -21,10 +21,9 @@ jobs:
         run: |
           pip install poetry
           poetry install
-          sudo apt install python3-pytest
       - name: Run linter and pytest
         run: |
-          make check
+          pytest
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         if: github.ref_name == 'main'
