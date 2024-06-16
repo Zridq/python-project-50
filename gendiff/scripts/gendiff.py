@@ -3,12 +3,14 @@ import json
 
 
 def generate_diff(first_file, second_file):
-    result = '\n'
+    result = '{\n'
     dict1 = json.load(open(first_file))
     dict2 = json.load(open(second_file))
     sum_dict = {**dict1, **dict2}
     sum_sorted_dict = dict(sorted(sum_dict.items()))
     for i in sum_sorted_dict:
+        if type(sum_sorted_dict[i]) is bool:
+            sum_sorted_dict[i] = str(sum_sorted_dict[i]).lower()
         if i in dict1 and i in dict2 and dict1[i] == sum_sorted_dict[i]:
             result += f'  {i}: {sum_sorted_dict[i]}\n'
         if i in dict1 and i not in dict2:
@@ -17,6 +19,7 @@ def generate_diff(first_file, second_file):
             result += f'- {i}: {dict1[i]}\n+ {i}: {sum_sorted_dict[i]}\n'
         if i in dict2 and i not in dict1:
             result += f'+ {i}: {sum_sorted_dict[i]}\n'
+    result += '}'
     print(result)
     return result
 
