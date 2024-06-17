@@ -10,8 +10,11 @@ RE:
 lint:
 	@poetry run flake8 gendiff
 
-check:
-	@pytest
+selfcheck:
+	poetry check
+
+check: 
+	selfcheck test lint
 
 check-coverage:
 	poetry run pytest --cov=gendiff --cov-report=term-missing --cov-report=xml
