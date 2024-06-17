@@ -24,7 +24,7 @@ jobs:
           pip install pytest
       - name: Run linter and pytest
         run: |
-          pytest tests/test_gendiff.py
+          pytest tests/test_gendiff.py --rootdir=./
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         if: github.ref_name == 'main'
