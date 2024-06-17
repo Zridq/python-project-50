@@ -17,7 +17,7 @@ selfcheck:
 	poetry check
 
 check: 
-	selfcheck test lint
+	poetry check | poetry run pytest lint
 
 check-coverage:
 	poetry run pytest --cov=gendiff --cov-report=term-missing --cov-report=xml
