@@ -23,6 +23,7 @@ jobs:
           poetry install
       - name: Run linter and pytest
         run: |
+          pip install pytest
           make check
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
