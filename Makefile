@@ -5,13 +5,14 @@ publish:
 	@poetry publish --dry-run --username BIBA --password BUBA
 
 RE:
-	@python3 -m pip install --force-reinstall --user dist/*.whl
-
+	@python3 -m pip uninstall hexlet-code -y
+	@python3 -m pip install --user dist/*.whl
+	
 lint:
 	poetry run flake8 gendiff
 
 test:
-	poetry run pytest
+	@poetry run pytest
 
 selfcheck:
 	poetry check
