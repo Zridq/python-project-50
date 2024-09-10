@@ -2,4 +2,5 @@
 make build
 make publish
 make RE
-
+gendiff /home/zridq/python-project-50/tests/fixtures/file1_tree.json /home/zridq/python-project-50/tests/fixtures/file2_tree.json
+pytest -vv
