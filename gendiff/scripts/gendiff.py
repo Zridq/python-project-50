@@ -13,8 +13,7 @@ def main():
     first_file = parse_file(args.first_file)
     second_file = parse_file(args.second_file)
     result = generate_diff(first_file, second_file)
-    print(result)
-    return result
+    return print(result)
 
 
 if __name__ == "__main__":

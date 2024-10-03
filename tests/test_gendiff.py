@@ -26,5 +26,4 @@ def test_add(input1, input2, expected, format):
         expected_result = f.read()
     parse_file1 = parse_file(file_1)
     parse_file2 = parse_file(file_2)
-    result = generate_diff(parse_file1, parse_file2, format) 
-    assert result == expected_result
+    assert generate_diff(parse_file1, parse_file2, format) == expected_result
