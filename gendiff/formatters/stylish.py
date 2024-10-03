@@ -1,3 +1,4 @@
+from gendiff.formatters.work_with_bool import prepair_value
 
 INDENT = '    '
 
@@ -11,18 +12,16 @@ def unpack(value, deep, buffer=''):
                 buffer += f"\n{INDENT*deep}{key}: {{{unpack(value2, deep+1)}\
 \n{INDENT*deep}}}"
             else:
-                buffer += f"\n{INDENT*deep}{key}: {value2}"
+                buffer += f"\n{INDENT*deep}{key}: \
+{prepair_value(value2, 'stylish')}"
     else:
-        buffer += str(value)
+        buffer += prepair_value(value, 'stylish')
     return buffer
 
 
 def make_stylish(diff, lines='{', deep=1):
     for key, value in diff.items():
         if isinstance(value, dict):
-            if 'type' not in value:
-                lines += f"\n{INDENT*deep}{key}: {value}"
-                return lines
             match value['type']:
                 case 'nested':
                     lines += f"\n{INDENT*deep}{key}: {{"
@@ -35,7 +34,8 @@ def make_stylish(diff, lines='{', deep=1):
                     lines += f"\n{INDENT*(deep-1)}  + {key}:\
 {unpack(value['data'],deep,' ')}"
                 case 'notchanged':
-                    lines += f"\n{INDENT*(deep)}{key}: {value['value1']}"
+                    lines += f"\n{INDENT*(deep)}{key}: \
+{prepair_value(value['value1'], 'stylish')}"
                 case 'removed':
                     if isinstance(value['data'], dict):
                         lines += f"\n{INDENT*(deep-1)}  - {key}: {{\
@@ -57,6 +57,7 @@ def make_stylish(diff, lines='{', deep=1):
                         lines += f"\n{INDENT*(deep-1)}  + {key}:\
 {unpack(value['value2'],deep, ' ')}"
                 case _:
-                    lines += f"\n{INDENT*deep}{key}: {value}"
+                    lines += f"\n{INDENT*deep}{key}: \
+{prepair_value(value, 'stylish')}"
     lines += f"\n{INDENT*(deep - 1)}}}"
     return lines

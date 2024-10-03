@@ -1,18 +1,5 @@
 from gendiff.formatters.stylish import make_stylish
-
-
-def work_with_bool(file):
-    bool_list = {True, False}
-    for i in file.keys():
-        if isinstance(file[i], dict):
-            work_with_bool(file[i])
-            continue
-        if file[i] in bool_list:
-            file[i] = str(file[i]).lower()
-            continue
-        if file[i] is None:
-            file[i] = 'null'
-    return file
+from gendiff.formatters.plain import make_plain
 
 
 def make_buffer(file1, file2):
@@ -42,12 +29,12 @@ def make_buffer(file1, file2):
 
 
 def generate_diff(data1, data2, format_name='stylish'):
-    file1 = work_with_bool(data1)
-    file2 = work_with_bool(data2)
-    buffer = make_buffer(file1, file2)
+    buffer = make_buffer(data1, data2)
     match format_name:
         case 'stylish':
             result = make_stylish(buffer)
+        case 'plain':
+            result = make_plain(buffer)
         case _:
             result = 0
     return result
