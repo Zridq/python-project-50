@@ -1,5 +1,4 @@
 def prepair_value(value, type):
-    print(value)
     bool_list = {True, False}
     if value in bool_list:
         value = f"{str(value).lower()}"

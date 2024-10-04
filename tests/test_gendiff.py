@@ -13,7 +13,8 @@ test_data = [
     ('file1_tree.json', 'file2_tree.json', 'expect_file1_file2_tree.txt', 'stylish'),
     ('file1_tree.yaml', 'file2_tree.yaml', 'expect_file1_file2_tree.txt','stylish'),
     ('file1_tree.json', 'file2_tree.json', 'expect_file1_file2_plain.txt','plain'),
-    ('file1_tree.yaml', 'file2_tree.yaml', 'expect_file1_file2_plain.txt','plain')
+    ('file1_tree.yaml', 'file2_tree.yaml', 'expect_file1_file2_plain.txt','plain'),
+    ('file1_tree.json', 'file2_tree.json', 'expect_file1_file2_json.json','json')
 ]
 
 

@@ -1,5 +1,6 @@
 from gendiff.formatters.stylish import make_stylish
 from gendiff.formatters.plain import make_plain
+import json
 
 
 def make_buffer(file1, file2):
@@ -35,6 +36,8 @@ def generate_diff(data1, data2, format_name='stylish'):
             result = make_stylish(buffer)
         case 'plain':
             result = make_plain(buffer)
+        case 'json':
+            result = json.dumps(buffer, indent=4)
         case _:
             result = 0
     return result
