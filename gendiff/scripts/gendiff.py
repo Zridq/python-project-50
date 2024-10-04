@@ -14,8 +14,7 @@ def main():
     second_file = parse_file(args.second_file)
     if args.format == None:
         args.format = 'stylish'
-    result = generate_diff(first_file, second_file, args.format)
-    return print(result)
+    return print(generate_diff(first_file, second_file, args.format))
 
 
 if __name__ == "__main__":

@@ -1,7 +1,6 @@
 import pytest
 from gendiff.scripts.gendiff import generate_diff
 from gendiff.parse_file import parse_file
-from gendiff.formatters.stylish import make_stylish
 
 
 def get_fixture_name(filename):
@@ -27,4 +26,5 @@ def test_add(input1, input2, expected, format):
         expected_result = f.read()
     parse_file1 = parse_file(file_1)
     parse_file2 = parse_file(file_2)
-    assert generate_diff(parse_file1, parse_file2, format) == expected_result
+    
+    assert  generate_diff(parse_file1, parse_file2, format) == expected_result
