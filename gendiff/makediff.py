@@ -29,7 +29,7 @@ def make_buffer(file1, file2):
     return buffer
 
 
-def generate_diff(data1, data2, format_name='stylish'):
+def generate_diff(data1, data2, format_name):
     buffer = make_buffer(data1, data2)
     match format_name:
         case 'stylish':
@@ -39,5 +39,5 @@ def generate_diff(data1, data2, format_name='stylish'):
         case 'json':
             result = json.dumps(buffer, indent=4)
         case _:
-            result = 0
+            result = "ti loh"
     return result
