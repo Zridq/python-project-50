@@ -1,5 +1,5 @@
 import pytest
-from gendiff.scripts.gendiff import generate_diff
+from gendiff.makediff import generate_diff
 from gendiff.parse_file import parse_file
 
 
