@@ -12,7 +12,7 @@ def main():
     args = parser.parse_args()
     first_file = parse_file(args.first_file)
     second_file = parse_file(args.second_file)
-    if args.format == None:
+    if args.format is None:
         args.format = 'stylish'
     return print(generate_diff(first_file, second_file, args.format))
 

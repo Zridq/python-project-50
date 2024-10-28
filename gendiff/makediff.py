@@ -29,7 +29,7 @@ def make_buffer(file1, file2):
     return buffer
 
 
-def generate_diff(data1, data2, format_name):
+def generate_diff(data1, data2, format_name='stylish'):
     buffer = make_buffer(data1, data2)
     match format_name:
         case 'stylish':
